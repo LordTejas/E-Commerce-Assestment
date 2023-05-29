@@ -1,0 +1,11 @@
+{
+  "name": "e-commerce-assestment",
+  "version": "1.0.0",
+  "description": "Assestment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tejas Kanji",
+  "license": "ISC"
+}
