@@ -5,9 +5,19 @@ const { productService } = require('../services');
 
 const getProducts = catchAsync(async (req, res) => {
 
-    const {searchQuery, limit} = req.query;
+    const {search, limit} = req.query;
 
-    const products = await productService.searchProducts(searchQuery, (!!limit) ? limit : 10);
+    if (!search) {
+        const products = await productService.getProducts((!!limit) && limit || null);
+
+        if (products.length === 0) {
+            throw new ApiError(httpStatus.NOT_FOUND, "No Products Found!");
+        } else {
+            res.status(httpStatus.OK).send({products: products});
+        }
+    }
+
+    const products = await productService.searchProducts(search, (!!limit) ? limit : 10);
 
     if (products.length === 0) {
         throw new ApiError(httpStatus.NOT_FOUND, "No Products Found!");

@@ -4,9 +4,8 @@
   "description": "Backend",
   "main": "index.js",
   "scripts": {
-    "start": "npm run index.js",
-    "dev": "nodemon index.js",
-    "test": "npm run test"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "Tejas Kanji",
   "license": "ISC",

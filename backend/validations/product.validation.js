@@ -3,21 +3,21 @@ const { objectId, isValidRating} = require("./custom.validation");
 
 const postProduct = {
     body: Joi.object().keys({
-        // name: Joi.string().required(),
-        // brandName: Joi.string().required(),
-        // description: Joi.string().required(),
-        // productId: Joi.string().required(),
-        // quantity: Joi.string().required(),
-        // rating: Joi.number().required(),
-        // options: Joi.string(), 
+        name: Joi.string().required(),
+        brandName: Joi.string().required(),
+        description: Joi.string().required(),
+        productId: Joi.string().required(),
+        quantity: Joi.string().required(),
+        rating: Joi.number(),
+        options: Joi.array().items(Joi.string().required()),
         // listOfImages: Joi.array(Joi.string),
     }),
 
 }
 
 const getProducts = {
-    body: Joi.object().keys({
-        searchQuery: Joi.string().required(),
+    query: Joi.object().keys({
+        search: Joi.string(),
         limit: Joi.number(),
     }),
 };

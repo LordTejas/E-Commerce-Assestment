@@ -10,7 +10,7 @@ router.get(
 
 router.get(
     '/:productId', 
-    validate(productValidation.addProductById),
+    validate(productValidation.getProductById),
     productController.getProductById);
 
 router.post(

@@ -2,8 +2,14 @@ const { Product } = require("../models");
 const httpStatus = require("http-status");
 const ApiError = require("../utils/ApiError");
 
-const getProducts = async () => {
-    const products = await Product.findAll();
+const getProducts = async (limit) => {
+
+    if (!!limit) {
+        const products = await Product.find().limit(limit);
+        return products;
+    }
+
+    const products = await Product.find();
     return products;
 };
 
