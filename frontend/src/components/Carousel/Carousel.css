@@ -1,0 +1,29 @@
+.carousel {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: dodgerblue;
+
+}
+
+.carousel .carousel-item {
+    height: 100%;
+    width: 100%;
+    background-color: dodgerblue;
+}
+
+.carousel .prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.carousel .next-btn {
+    position: absolute;
+    top: 50%;
+    right: 2%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

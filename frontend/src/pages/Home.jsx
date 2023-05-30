@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/Carousel/Carousel";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { fetchProducts } from "../utils/search";
+import ProductCard from "../components/ProductCard/ProductCard";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
@@ -71,7 +72,27 @@ const Home = () => {
         />
       </div>
 
-      <Carousel />
+      <div style={{ padding: "1rem" }}>
+        <Carousel>
+          <h1>Item 1</h1>
+          <h1>Item 2</h1>
+          <h1>Item 3</h1>
+          <h1>Item 4</h1>
+        </Carousel>
+      </div>
+
+      <section style={{ padding: "1rem" }}>
+        <ProductCard
+          name={"Bluetooth Heasets"}
+          brandName={"India"}
+          description={"Best Headsets in India!"}
+          options={["ADD", "WishList", "Price Drop"]}
+          id={'someID'}
+          productId={'1'}
+          quantity={'5'}
+          rating={'4'}
+        />
+      </section>
     </main>
   );
 };
