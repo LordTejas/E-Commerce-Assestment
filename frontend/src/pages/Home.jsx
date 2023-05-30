@@ -1,14 +1,17 @@
+import './Home.css';
 import React, { useState, useEffect } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import SearchBar from "../components/SearchBar/SearchBar";
 import { fetchProducts } from "../utils/search";
 import ProductCard from "../components/ProductCard/ProductCard";
+import useProducts from "../hooks/useProducts";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
   const [isSearching, setIsSearching] = useState(false); // Can be useful in future for shallow rendering
   const [searchResults, setSearchResults] = useState([]);
   const [debounceTimeout, setDebounceTimeout] = useState(null);
+  const {products, loading, error} = useProducts();
 
   useEffect(() => {
     if (searchText.trim().length === 0) {
@@ -16,7 +19,7 @@ const Home = () => {
       setIsSearching(false);
       return;
     }
-
+ 
     debounceSearch();
 
     return () => {
@@ -81,17 +84,17 @@ const Home = () => {
         </Carousel>
       </div>
 
-      <section style={{ padding: "1rem" }}>
-        <ProductCard
+      <section style={{ padding: "1rem" }} className="products-list-grid">
+        {/* <ProductCard
           name={"Bluetooth Heasets"}
           brandName={"India"}
           description={"Best Headsets in India!"}
           options={["ADD", "WishList", "Price Drop"]}
-          id={'someID'}
           productId={'1'}
           quantity={'5'}
           rating={'4'}
-        />
+        /> */}
+        {products && products.length > 0 && products.map(ProductCard)}
       </section>
     </main>
   );

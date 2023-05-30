@@ -24,7 +24,7 @@ const ProductCard = ({
   };
 
   return (
-    <section id={id} className="product-card">
+    <section key={id} className="product-card">
       <div className="product-images">
         {listOfImages && listOfImages.length !== 0 ? (
           <Carousel className="product-card-carousel">
