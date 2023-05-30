@@ -5,54 +5,64 @@ import { fetchProducts } from "../utils/search";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
+  const [isSearching, setIsSearching] = useState(false); // Can be useful in future for shallow rendering
   const [searchResults, setSearchResults] = useState([]);
   const [debounceTimeout, setDebounceTimeout] = useState(null);
+
+  useEffect(() => {
+    if (searchText.trim().length === 0) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+
+    debounceSearch();
+
+    return () => {
+      if (debounceTimeout) {
+        clearTimeout(debounceTimeout);
+      }
+    };
+  }, [searchText]);
 
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
   };
 
-  /**
-   * Debounce Search
-   */
-  useEffect(() => {
-    if (debounceTimeout) {
-      clearTimeout(debounceTimeout);
-    }
-    
-    if (searchText.trim() !== "") {
-      const timeout = setTimeout(() => {
-        performSearch();
-      }, 500);
-    
-      setDebounceTimeout(timeout);
-    } else {
+  const performSearch = async (search) => {
+    if (search.length === 0) {
       setSearchResults([]);
+      setIsSearching(false);
+      return;
     }
-    
-    return () => {
-      clearTimeout(debounceTimeout);
-    };
-  }, [searchText]);
 
-  const performSearch = async (searchText) => {
     setIsSearching(true);
 
     try {
-      const products = await fetchProducts(searchText);
+      const products = await fetchProducts(search);
       setSearchResults(products);
-    } catch (err) {
-      console.log(err.message);
+    } catch (e) {
       setSearchResults([]);
     } finally {
       setIsSearching(false);
     }
   };
 
+  const debounceSearch = () => {
+    if (debounceTimeout) {
+      clearTimeout(debounceTimeout);
+    }
+
+    const timeout = setTimeout(() => {
+      performSearch(searchText);
+    }, 500);
+
+    setDebounceTimeout(timeout);
+  };
+
   return (
     <main>
-      <div style={{padding: '1rem'}}>
+      <div style={{ padding: "1rem" }}>
         <SearchBar
           searchText={searchText}
           searchResults={searchResults}

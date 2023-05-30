@@ -20,12 +20,13 @@ const Button = ({
         alignItems: 'center',
         width: (fullWidth) ? '100%' : 'auto',
         fontSize: (fontSize) ? fontSize : '1rem',
-    fontWeight: (fontWeight) ? fontWeight : "300",
+        fontWeight: (fontWeight) ? fontWeight : "300",
         color: (color) ? color : 'black',
         padding: (padding) ? padding : '0rem 0.5rem',
         border: (outlined) ? '2px solid black' : 'none',
         borderRadius: (rounded) ? '12px' : '0px',
         backgroundColor: (outlined) ? 'white' : (bgColor) ? bgColor : 'dodgerblue',
+        cursor: 'pointer',
     }
 
     return (

@@ -19,16 +19,20 @@
     /* Ensure the suggestions modal appears above other content */
 }
 
-.suggestions-modal ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.suggestions-modal .suggestion-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.4rem;
+    cursor: pointer;
 }
 
-.suggestions-modal li {
-    display: flex;
-    align-items: center;
-    padding: 10px;
+.suggestions-modal > .suggestions-item span {
+    flex: 1;
+    text-align: left;
+    height: 100%;   
 }
 
 .suggestions-modal img {

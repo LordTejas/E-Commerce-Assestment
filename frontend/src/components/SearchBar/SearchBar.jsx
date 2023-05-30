@@ -19,17 +19,19 @@ const SearchBar = ({ searchText, searchResults, handleSearchTextChange, handleSe
         onClick={handleSearch}
         rounded
       />
+      {
+      searchResults.length !== 0
+      &&
       <div className="suggestions-modal">
-        <h1>Bottom</h1>
-        <ul>
           {searchResults.map((product) => (
-            <li key={product.id}>
+            <div key={product.id} className="suggestion-item">
               <img src={'/product-placeholder.png'} alt={product.name} />
               <span>{product.name}</span>
-            </li>
+            </div>
           ))}
-        </ul>
       </div>
+      }
+
     </div>
   );
 };

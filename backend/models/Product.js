@@ -19,8 +19,10 @@ const productSchema = new Schema({
     default: '',
   },
   _id: {
-    type: String,
-    default: '',
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    unique: true,
+    auto: true,
   },
   productId: {
     type: String,
