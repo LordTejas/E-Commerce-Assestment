@@ -11,7 +11,16 @@ const getSalesBannerById = {
     }),
 }
 
+const createSalesBanner = {
+    body: Joi.object().keys({
+        title: Joi.string(),
+        description: Joi.string(),
+        image: Joi.string().required(),
+    }),
+}
+
 module.exports = {
     getSalesBanners,
-    getSalesBannerById
+    getSalesBannerById,
+    createSalesBanner,
 }

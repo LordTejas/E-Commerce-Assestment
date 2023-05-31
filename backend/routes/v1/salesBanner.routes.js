@@ -13,4 +13,9 @@ router.get(
     validate(salesBannerValidation.getSalesBannerById),
     salesBannerController.getSalesBannerById);
 
+router.post(
+    '/',
+    validate(salesBannerValidation.createSalesBanner),
+    salesBannerController.createSalesBanner);
+
 module.exports = router;

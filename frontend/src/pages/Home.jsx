@@ -2,9 +2,10 @@ import './Home.css';
 import React, { useState, useEffect } from "react";
 import Carousel from "../components/Carousel/Carousel";
 import SearchBar from "../components/SearchBar/SearchBar";
-import { fetchProducts } from "../utils/search";
 import ProductCard from "../components/ProductCard/ProductCard";
 import useProducts from "../hooks/useProducts";
+import useSalesBanners from '../hooks/useSalesBanners';
+import { fetchProducts } from '../utils/products';
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
@@ -12,6 +13,7 @@ const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [debounceTimeout, setDebounceTimeout] = useState(null);
   const {products, loading, error} = useProducts();
+  const {salesBanners} = useSalesBanners();
 
   useEffect(() => {
     if (searchText.trim().length === 0) {

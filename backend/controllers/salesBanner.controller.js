@@ -11,20 +11,36 @@ const getSalesBanners = catchAsync(async (req, res) => {
         throw new ApiError(httpStatus.NOT_FOUND, 'Sales Banners not found!');
     }
 
-    res.satus(200).send(salesBanners);   
+    res.status(httpStatus.OK).send(salesBanners);   
 });
 
 const getSalesBannerById = catchAsync(async (req, res) => {
-    const salesBanners = await salesBannerService.getAll();
+
+    const salesBannerId = req.params.salesBannerId;
+
+    const salesBanners = await salesBannerService.getById(salesBannerId);
 
     if (!salesBanners) {
         throw new ApiError(httpStatus.NOT_FOUND, 'Sales Banner not found!');
     }
 
-    res.satus(200).send(salesBanners);
+    res.status(httpStatus.OK).send(salesBanners);
+});
+
+const createSalesBanner = catchAsync(async (req, res) => {
+
+    const newSalesBanner = await salesBannerService.create(req.body);
+
+    if (!newSalesBanner) {
+        throw new ApiError(httpStatus.INTERNAL_SERVER_ERROR, 'Internal Error!');
+    }
+
+    res.status(httpStatus.CREATED).send(newSalesBanner);;
+
 });
 
 module.exports = {
     getSalesBanners,
     getSalesBannerById,
+    createSalesBanner,
 }

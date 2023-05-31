@@ -8,7 +8,7 @@ const salesBannerSchema = new Schema({
     unique: true,
     auto: true,
   },
-  name: {
+  title: {
     type: String,
     default: "",
   },

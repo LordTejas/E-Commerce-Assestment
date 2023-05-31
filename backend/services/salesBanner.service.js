@@ -15,7 +15,21 @@ const getById = async (pk) => {
   return salesBanner;
 };
 
+const create = async (body) => {
+
+  const {title, description, image} = body;
+
+  const newSalesBanner = await SalesBanner.create({
+    title,
+    description,
+    image,
+  });
+
+  return newSalesBanner;
+};
+
 module.exports = {
   getAll,
   getById,
+  create,
 };
