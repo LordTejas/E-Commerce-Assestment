@@ -1,4 +1,4 @@
-const catchAsync = require('../utils/catchAsync');
+const catchAsync = require('../utils/CatchAsync');
 const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const { salesBannerService } = require('../services');
