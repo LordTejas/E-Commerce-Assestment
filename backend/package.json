@@ -4,8 +4,8 @@
   "description": "Backend",
   "main": "index.js",
   "engines": {
-    "node": "16.x",
-    "npm": "8.x.x"
+    "node": "20.x",
+    "npm": "9.x"
   },
   "scripts": {
     "start": "node index.js",
