@@ -1,5 +1,5 @@
 */node_modules/*
-.env
-ipConfig.json
+# .env
+# ipConfig.json
 # Local Netlify folder
 .netlify
