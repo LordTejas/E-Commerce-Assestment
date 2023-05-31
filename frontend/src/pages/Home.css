@@ -1,7 +1,9 @@
 .products-list-grid {
-    width: 100%;
     display: grid;
+    width: 100%;
+    padding: 1rem;
     gap: 1rem;
+    justify-content: space-between;
 }
 
 @media (min-width: 768px) {
@@ -11,6 +13,12 @@
 }
 
 @media (min-width: 1024px) {
+    .products-list-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1280px) {
     .products-list-grid {
         grid-template-columns: repeat(4, 1fr);
     }

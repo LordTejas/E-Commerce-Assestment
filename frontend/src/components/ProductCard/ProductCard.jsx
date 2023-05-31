@@ -15,25 +15,25 @@ const ProductCard = ({
 
   options = [" ", ...options];
 
-  const ProductImage = ({ src, key }) => {
+  const ProductImage = ({ src, id }) => {
     return (
-      <div key={key} className="product-card-image">
-        <img src={src} alt={`product-${key}`} />
+      <div key={id} className="product-card-image">
+        <img src={src} alt={`product-${id}`} />
       </div>
     );
   };
 
   return (
-    <section key={id} className="product-card">
+    <section key={productId} className="product-card">
       <div className="product-images">
         {listOfImages && listOfImages.length !== 0 ? (
           <Carousel className="product-card-carousel">
             {listOfImages.map((image, index) => (
-              <ProductImage src={image} key={index} />
+              <ProductImage src={image} id={productId + index} />
             ))}
           </Carousel>
         ) : (
-          <ProductImage src={"/product-placeholder.png"} key={0} />
+          <ProductImage src={"/product-placeholder.png"} id={productId + '0'} />
         )}
       </div>
       <div className="product-actions-area">

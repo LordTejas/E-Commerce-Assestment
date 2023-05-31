@@ -25,7 +25,7 @@ const SearchBar = ({ searchText, searchResults, handleSearchTextChange, handleSe
       <div className="suggestions-modal">
           {searchResults.map((product) => (
             <div key={product.id} className="suggestion-item">
-              <img src={'/product-placeholder.png'} alt={product.name} />
+              <img src={(product.listOfImages.length > 0) ? product.listOfImages[0] : '/product-placeholder.png'} alt={product.name} />
               <span>{product.name}</span>
             </div>
           ))}

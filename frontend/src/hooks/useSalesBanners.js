@@ -20,6 +20,7 @@ const useSalesBanners = () => {
     };
 
     fetchData();
+    console.log(salesBanners)
   }, []);
 
   return { salesBanners, isLoading, error };

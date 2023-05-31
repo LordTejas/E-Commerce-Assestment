@@ -15,6 +15,7 @@ const Home = () => {
   const {products, loading, error} = useProducts();
   const {salesBanners} = useSalesBanners();
 
+  
   useEffect(() => {
     if (searchText.trim().length === 0) {
       setSearchResults([]);
@@ -77,25 +78,19 @@ const Home = () => {
         />
       </div>
 
-      <div style={{ padding: "1rem" }}>
-        <Carousel>
-          <h1>Item 1</h1>
-          <h1>Item 2</h1>
-          <h1>Item 3</h1>
-          <h1>Item 4</h1>
+      <div style={{ padding: "1rem", height: '40vh' }}>
+        <Carousel slideShow={2}>
+          {salesBanners && salesBanners.length > 0 && salesBanners.map((banner, index) => {
+            return (
+              <div key={index} className='carousel-item' style={{height: '100%', width: '100%'}}>
+                <img src={banner.image} alt={banner.title} className='carousel-image' style={{height: '100%', width: '100%', objectFit: 'cover', objectPosition: 'top'}} />
+              </div>
+            );
+          })}
         </Carousel>
       </div>
 
-      <section style={{ padding: "1rem" }} className="products-list-grid">
-        {/* <ProductCard
-          name={"Bluetooth Heasets"}
-          brandName={"India"}
-          description={"Best Headsets in India!"}
-          options={["ADD", "WishList", "Price Drop"]}
-          productId={'1'}
-          quantity={'5'}
-          rating={'4'}
-        /> */}
+      <section className="products-list-grid">
         {products && products.length > 0 && products.map(ProductCard)}
       </section>
     </main>
