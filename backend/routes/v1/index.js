@@ -1,8 +1,10 @@
 const express = require("express");
-const videosRoute = require("./products.routes");
+const productsRoute = require("./products.routes");
+const salesBannersRoute = require("./salesBanner.routes");
 
 const router = express.Router();
 
-router.use('/products', videosRoute);
+router.use('/products', productsRoute);
+router.use('/sales-banner', salesBannersRoute);
 
 module.exports = router;
